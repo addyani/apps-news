@@ -1,5 +1,3 @@
 # apps-news
 Simple Website Application
-
-CRUD News (Soft Delete)
-Tree Comments (Nested Comment)
+Fitur: CRUD News (Soft Delete) simple, Tree Comments (Nested Comment)
