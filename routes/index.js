@@ -1,23 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-const path = require('path');
-const multer = require('multer');
+const upload = require('../middlewares/imageMulter')
 const auth = require('../auth');
-
-const fileStorage = multer.diskStorage({
-	destination: (req, file, callback) => {
-		callback(null, '././public/images');
-	}, 
-	filename: (req, file, callback) => {
-		callback(null, Date.now() + path.extname(file.originalname))
-	}
-});
-
-const upload = multer({
-	storage: fileStorage
-  });
-
 const dasboardController = require('../controllers/dasboardController')
 const newsController = require('../controllers/newsController')
 const commentController = require('../controllers/commentController')
