@@ -1,0 +1,28 @@
+
+<%- include('templates/header')-%>
+
+<form method="POST" action="/updatenews/<%= words.id %>" enctype="multipart/form-data">
+    <div>
+        <h1><%= title %></h1>
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title Topic</label>
+      <input type="text" value="<%= words.title %>" class="form-control" id="title" name="title" placeholder="Title">
+    </div>
+    <div class="mb-3">
+      <label for="author" class="form-label">Author</label>
+      <input type="text" value="<%= words.author %>"class="form-control" id="author" name="author" placeholder="author">
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" value="<%= words.image %>"accept="image/png, image/jpeg, image/jpg" class="form-control" id="image" name="image" placeholder="image">
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea value="<%= words.content %>"class="form-control" id="content" name="content" placeholder="content"></textarea>
+    </div>
+    <a href="/" class ="btn btn-primary">Go To Page</a> &nbsp; 
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+
+  <%- include('templates/footer')-%>

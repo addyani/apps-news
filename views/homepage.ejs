@@ -1,0 +1,16 @@
+<%- include('templates/header')-%>
+    <% words.forEach(function(item) {%>
+        <div class="bg-light p-5 rounded"> 
+            <h1 class="text-center"><%= item.title %></h1>
+            <p class="text-center">
+                author by : <%= item.author %>
+            </p>
+            <img class="rounded mx-auto d-block " src="..\images\<%= item.image %>" height="400" width="600" alt="">
+            <p class="text-break">
+                <%= item.content %>
+            </p>
+            <a href="/detailnews/<%= item.id %>" role="link">See Detail &raquo;</a>   
+        </div>
+        <br>
+    <%});%>
+<%- include('templates/footer')-%>

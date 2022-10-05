@@ -1,0 +1,212 @@
+<%- include('templates/header')-%>
+        <div class="bg-light p-5 rounded"> 
+            <h1 class="text-center"><%= words.title %></h1>
+            <p class="text-center">
+                author by : <%= words.author %>
+            </p>
+            <img class="rounded mx-auto d-block " src="..\images\<%= words.image %>" height="400" width="600" alt="">
+            <p class="text-break">
+                <%= words.content %>
+            </p>
+        </div>
+        <br>
+        <div class="text-center">
+            <a href="/" class ="btn btn-primary">Back</a> &nbsp; 
+            <a href="/updatenews/<%= words.id %>" class ="btn btn-warning">Update</a> &nbsp; 
+            <a href="/deletenews/<%= words.id %>" class ="btn btn-danger">Delete</a> &nbsp; 
+            <br>
+        </div>
+        <br>
+        <div class="bg-light p-5 rounded"> 
+            <form  method="POST" action="/addcomment/<%= words.id %>/0">
+                <div>
+                    <h1>New Comments</h1>
+                </div>
+                <div class="mb-3">
+                  <label for="name" class="form-label">name</label>
+                  <input type="text" value="Anonim" class="form-control" id="name" name="name" placeholder="Title">
+                </div>
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Comments</label>
+                    <textarea class="form-control" id="comment" name="comment" placeholder="content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>
+        <br>
+        <% array.forEach(function(item) {%>
+            <% if(item.replyid == 0) {%>
+            <div class="bg-light p-5 rounded"> 
+                <p class="text-break"><%= item.name %></p>
+                <p class="text-break"><%= item.comment %></p>
+                <a href="/replycomment/<%= words.id %>/<%= item.id %>">Reply</a> &nbsp; 
+                <a href="/cancelcomment/<%= words.id %>/<%= item.id %>">Cancel Reply</a> &nbsp; 
+                <a href="/showcomment/<%= words.id %>/<%= item.id %>">Show Reply</a> &nbsp;
+                <a href="/hidecomment/<%= words.id %>/<%= item.id %>">Hide Reply</a>
+                <% if(item.replystatus == 1) {%>
+                    <form method="POST" action="/addcomment/<%= words.id %>/<%= item.id %>">
+                        <div>
+                            <h3>Reply</h3>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">name</label>
+                            <input type="text" value="Anonim" class="form-control" id="name" name="name" placeholder="Title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment" class="form-label">Comments</label>
+                            <textarea class="form-control" id="comment" name="comment" placeholder="content"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </form>
+                <%};%>
+                <% array.forEach(function(item2) {%>
+                    <% if(item2.replyid == item.id && item.showstatus == 1) {%>
+                    <div class="bg-light p-5 rounded"> 
+                        <p class="text-break"><%= item2.name %></p>
+                        <p class="text-break"><%= item2.comment %></p>
+                        <a  href="/replycomment/<%= words.id %>/<%= item2.id %>">Reply</a> &nbsp; 
+                        <a  href="/cancelcomment/<%= words.id %>/<%= item2.id %>">Cancel Reply</a> &nbsp; 
+                        <a  href="/showcomment/<%= words.id %>/<%= item2.id %>">Show Reply</a> &nbsp;
+                        <a  href="/hidecomment/<%= words.id %>/<%= item2.id %>">Hide Reply</a>
+                        <% if(item2.replystatus == 1) {%>
+                            <form method="POST" action="/addcomment/<%= words.id %>/<%= item2.id %>">
+                                <div>
+                                    <h3>Reply</h3>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">name</label>
+                                    <input type="text" value="Anonim" class="form-control" id="name" name="name" placeholder="Title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="comment" class="form-label">Comments</label>
+                                    <textarea class="form-control" id="comment" name="comment" placeholder="content"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Post</button>
+                            </form>
+                        <%};%>
+                        <% array.forEach(function(item3) {%>
+                            <% if(item3.replyid == item2.id && item2.showstatus == 1) {%>
+                            <div class="bg-light p-5 rounded"> 
+                                <p class="text-break"><%= item3.name %></p>
+                                <p class="text-break"><%= item3.comment %></p>
+                                <a href="/replycomment/<%= words.id %>/<%= item3.id %>">Reply</a> &nbsp; 
+                                <a href="/cancelcomment/<%= words.id %>/<%= item3.id %>">Cancel Reply</a> &nbsp; 
+                                <a href="/showcomment/<%= words.id %>/<%= item3.id %>">Show Reply</a> &nbsp;
+                                <a href="/hidecomment/<%= words.id %>/<%= item3.id %>">Hide Reply</a>
+                                <% if(item3.replystatus == 1) {%>
+                                    <form method="POST" action="/addcomment/<%= words.id %>/<%= item3.id %>">
+                                        <div>
+                                            <h3>Reply</h3>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">name</label>
+                                            <input type="text" value="Anonim" class="form-control" id="name" name="name" placeholder="Title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="comment" class="form-label">Comments</label>
+                                            <textarea class="form-control" id="comment" name="comment" placeholder="content"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Post</button>
+                                    </form>
+                                <%};%>
+                                <% array.forEach(function(item4) {%>
+                                    <% if(item4.replyid == item3.id && item3.showstatus == 1) {%>
+                                    <div class="bg-light p-5 rounded"> 
+                                        <p class="text-break"><%= item4.name %></p>
+                                        <p class="text-break"><%= item4.comment %></p>
+                                        <a href="/replycomment/<%= words.id %>/<%= item4.id %>">Reply</a> &nbsp; 
+                                        <a href="/cancelcomment/<%= words.id %>/<%= item4.id %>">Cancel Reply</a> &nbsp; 
+                                        <a href="/showcomment/<%= words.id %>/<%= item4.id %>">Show Reply</a> &nbsp;
+                                        <a href="/hidecomment/<%= words.id %>/<%= item4.id %>">Hide Reply</a>
+                                        <% if(item4.replystatus == 1) {%>
+                                            <form method="POST" action="/addcomment/<%= words.id %>/<%= item4.id %>">
+                                                <div>
+                                                    <h3>Reply</h3>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label">name</label>
+                                                    <input type="text" value="Anonim" class="form-control" id="name" name="name" placeholder="Title">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="comment" class="form-label">Comments</label>
+                                                    <textarea class="form-control" id="comment" name="comment" placeholder="content"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Post</button>
+                                            </form>
+                                        <%};%>
+                                        <% array.forEach(function(item5) {%>
+                                            <% if(item5.replyid == item4.id && item4.showstatus == 1) {%>
+                                            <div class="bg-light p-5 rounded"> 
+                                                <p class="text-break"><%= item5.name %></p>
+                                                <p class="text-break"><%= item5.comment %></p>
+                                                <a href="/replycomment/<%= words.id %>/<%= item5.id %>">Reply</a> &nbsp; 
+                                                <a href="/cancelcomment/<%= words.id %>/<%= item5.id %>">Cancel Reply</a> &nbsp; 
+                                                <a href="/showcomment/<%= words.id %>/<%= item5.id %>">Show Reply</a> &nbsp;
+                                                <a href="/hidecomment/<%= words.id %>/<%= item5.id %>">Hide Reply</a>
+                                                <% if(item5.replystatus == 1) {%>
+                                                    <form method="POST" action="/addcomment/<%= words.id %>/<%= item5.id %>">
+                                                        <div>
+                                                            <h3>Reply</h3>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="name" class="form-label">name</label>
+                                                            <input type="text" value="Anonim" class="form-control" id="name" name="name" placeholder="Title">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="comment" class="form-label">Comments</label>
+                                                            <textarea class="form-control" id="comment" name="comment" placeholder="content"></textarea>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Post</button>
+                                                    </form>
+                                                <%};%>
+                                                <% array.forEach(function(item6) {%>
+                                                    <% if(item6.replyid == item5.id && item5.showstatus == 1) {%>
+                                                    <div class="bg-light p-5 rounded"> 
+                                                        <p class="text-break"><%= item6.name %></p>
+                                                        <p class="text-break"><%= item6.comment %></p>
+                                                        <a href="/replycomment/<%= words.id %>/<%= item6.id %>">Reply</a> &nbsp; 
+                                                        <a href="/cancelcomment/<%= words.id %>/<%= item6.id %>">Cancel Reply</a> &nbsp; 
+                                                        <a href="/showcomment/<%= words.id %>/<%= item6.id %>">Show Reply</a> &nbsp;
+                                                        <a href="/hidecomment/<%= words.id %>/<%= item6.id %>">Hide Reply</a>
+                                                        <% if(item6.replystatus == 1) {%>
+                                                            <form method="POST" action="/addcomment/<%= words.id %>/<%= item6.id %>">
+                                                                <div>
+                                                                    <h3>Reply</h3>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="name" class="form-label">name</label>
+                                                                    <input type="text" value="Anonim" class="form-control" id="name" name="name" placeholder="Title">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="comment" class="form-label">Comments</label>
+                                                                    <textarea class="form-control" id="comment" name="comment" placeholder="content"></textarea>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary">Post</button>
+                                                            </form>
+                                                        <%};%>
+                                                    </div>
+                                                    <br>
+                                                    <%};%>
+                                                <%});%>
+                                            </div>
+                                            <br>
+                                            <%};%>
+                                        <%});%>
+                                    </div>
+                                    <br>
+                                    <%};%>
+                                <%});%>
+                            </div>
+                            <br>
+                            <%};%>
+                        <%});%>
+                    </div>
+                    <br>
+                    <%};%>
+                <%});%>
+            </div>
+            <br>
+            <%};%>
+        <%});%>
+        
+<%- include('templates/footer')-%>
